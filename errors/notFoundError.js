@@ -1,10 +1,10 @@
-// const { NOT_FOUND_404 } = require('../config/config');
+const { NOT_FOUND_404 } = require('../config/config');
 
-// class NotFoundError extends Error {
-//   constructor(message) {
-//     super(message);
-//     this.statusCode = NOT_FOUND_404;
-//   }
-// }
+class NotFoundError extends Error {
+  constructor(message) {
+    super(message);
+    this.statusCode = NOT_FOUND_404;
+  }
+}
 
-// module.exports = NotFoundError;
+module.exports = NotFoundError;

@@ -31,16 +31,14 @@ module.exports.updateUser = (req, res, next) => {
 
 module.exports.createUser = (req, res, next) => {
   const {
-    name, about, avatar, email, password,
+    email, password, name
   } = req.body;
   bcrypt.hash(password, 10)
     .then((hash) => User.create({
-      name, about, avatar, email, password: hash,
+      email, password: hash, name
     }))
     .then(() => res.status(STATUS_CREATED_201).send({
       name,
-      about,
-      avatar,
       email,
     }))
     .catch((err) => {
