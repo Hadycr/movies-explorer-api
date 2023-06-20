@@ -16,7 +16,7 @@ app.use(cors());
 app.use(helmet());
 
 
-mongoose.connect('mongodb://localhost:27017/mydb1', {
+mongoose.connect('mongodb://127.0.0.1:27017/mydb1', {
   useNewUrlParser: true,
   enableUtf8Validation: false,
 });
@@ -34,4 +34,8 @@ app.use(errorLogger);
 app.use(errors());
 app.use(defaultError);
 
-app.listen(PORT);
+// app.listen(PORT);
+app.listen(PORT, () => {
+  console.log('Ссылка на сервер');
+  // console.log(BASE_PATH);
+});

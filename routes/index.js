@@ -25,4 +25,5 @@ router.use('/movies/', cardRouter);
 router.use('/*', (req, res, next) => {
   next(new NotFoundError('404 not found'));
 });
+
 module.exports = router;

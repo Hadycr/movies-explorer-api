@@ -9,6 +9,8 @@ module.exports.getMovies = (req, res, next) => {
   Movie.find({})
     .then((movies) => res.send(movies))
     .catch(next);
+
+    //надо по айди, так как не все видео отоборрвазились, а только пользователя
 };
 
 module.exports.createMovies = (req, res, next) => {
