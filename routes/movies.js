@@ -14,10 +14,10 @@ router.post('/', celebrate({
     year: Joi.string().required().min(2).max(30),
     description: Joi.string().required().min(2).max(30),
     image: Joi.string().required().pattern(/^(http|https):\/\/[w{3}.]?[\w-._~:/?#[\]@!$&'()*+,;=]#?/i),
-    trailer: Joi.string().required().min(2).max(30),
+    trailerLink: Joi.string().required().pattern(/^(http|https):\/\/[w{3}.]?[\w-._~:/?#[\]@!$&'()*+,;=]#?/i),
     nameRU: Joi.string().required().min(2).max(30),
     nameEN: Joi.string().required().min(2).max(30),
-    thumbnail: Joi.string().required().min(2).max(30),
+    thumbnail: Joi.string().required().pattern(/^(http|https):\/\/[w{3}.]?[\w-._~:/?#[\]@!$&'()*+,;=]#?/i),
     movieId: Joi.string().required().min(2).max(30),
   }),
 }), createMovies);
