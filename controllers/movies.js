@@ -6,11 +6,9 @@ const ForbiddenError = require('../errors/forbiddenError');
 const { STATUS_CREATED_201 } = require('../config/config');
 
 module.exports.getMovies = (req, res, next) => {
-  Movie.find({})
+  Movie.find(({ owner: req.user._id }))
     .then((movies) => res.send(movies))
     .catch(next);
-
-    //надо по айди, так как не все видео отоборрвазились, а только пользователя
 };
 
 module.exports.createMovies = (req, res, next) => {
@@ -36,7 +34,7 @@ module.exports.createMovies = (req, res, next) => {
     .then((movie) => res.status(STATUS_CREATED_201).send(movie))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next(new BadRequestError('Переданы некорректные данные при создании карточки'));
+        next(new BadRequestError('Переданы некорректные данные при создании фильма'));
       } else {
         next(err);
       }
@@ -64,41 +62,3 @@ module.exports.deleteMovies = (req, res, next) => {
       }
     });
 };
-
-// module.exports.addLike = (req, res, next) => {
-//   Card.findByIdAndUpdate(
-//     req.params.cardId,
-//     { $addToSet: { likes: req.user._id } },
-//     { new: true },
-//   )
-//     .orFail(() => {
-//       throw new NotFoundError('Данные не найдены');
-//     })
-//     .then((card) => res.send({ card }))
-//     .catch((err) => {
-//       if (err.name === 'CastError') {
-//         next(new BadRequestError('Данные не корректны'));
-//       } else {
-//         next(err);
-//       }
-//     });
-// };
-
-// module.exports.deleteLike = (req, res, next) => {
-//   Card.findByIdAndUpdate(
-//     req.params.cardId,
-//     { $pull: { likes: req.user._id } },
-//     { new: true },
-//   )
-//     .orFail(() => {
-//       throw new NotFoundError('Данные не найдены');
-//     })
-//     .then((card) => res.send({ card }))
-//     .catch((err) => {
-//       if (err.name === 'CastError') {
-//         next(new BadRequestError('Данные не корректны'));
-//       } else {
-//         next(err);
-//       }
-//     });
-// };
