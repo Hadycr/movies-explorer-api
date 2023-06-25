@@ -1,0 +1,23 @@
+const BAD_REQUEST_400 = 400;
+const NOT_FOUND_404 = 404;
+const DEFAULT_ERROR_500 = 500;
+const CONFLICT_ERROR_409 = 409;
+const NOT_AUTHORIZED_ERROR_401 = 401;
+const FORBIDEN_ERROR_403 = 403;
+const STATUS_CREATED_201 = 201;
+
+const URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/;
+
+const MONGO_URL = 'mongodb://127.0.0.1:27017/mydb1';
+
+module.exports = {
+  MONGO_URL,
+  BAD_REQUEST_400,
+  NOT_FOUND_404,
+  DEFAULT_ERROR_500,
+  CONFLICT_ERROR_409,
+  NOT_AUTHORIZED_ERROR_401,
+  FORBIDEN_ERROR_403,
+  STATUS_CREATED_201,
+  URL_REGEX,
+};
